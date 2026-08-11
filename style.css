@@ -7,7 +7,7 @@ body {
 .board {
   display: flex;
   flex-wrap: wrap;
-  width: 325px;
+  width: 450px;
 }
 
 .sqr {
@@ -40,6 +40,11 @@ body {
   font-weight: 500;
 }
 
+.nav-links a:hover {
+  color: #39648e;
+  text-decoration: underline;
+}
+
 .logo {
     font-weight: 600;
     font-size: 20px;
@@ -54,6 +59,7 @@ body {
   height: 40px;
   object-fit: contain;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .selected {
@@ -65,11 +71,57 @@ body {
 .home-background {
   display: flex;
   opacity: 0.5;
-   width: 100vw;
+  width: 100vw;
   height: 100vh;
   object-fit: cover;
   position: fixed; 
   top: 0;
   left: 0;
   z-index: -1;
+  overflow: hidden;
+}
+
+  .home-background img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.grid{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 550px;
+  height: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  background: #EEEEEE;
+  border-radius: 16px;
+
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - -100px);
+
+}
+
+.btn-play {
+  background-color: white;
+  color: #94C6E7;
+  font-size: 24px;
+  border-radius: 10px;
+  font-weight: bold;
+  padding: 16px 40px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn-play:hover {
+  background-color: #EEEEEE;
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
