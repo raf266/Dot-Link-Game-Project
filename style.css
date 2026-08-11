@@ -2,20 +2,38 @@ body {
   background-color: gainsboro;
   font-family: system-ui, sans-serif;
   margin: 0;
+  min-height: 100vh;
 }
 
 .board {
-  display: flex;
-  flex-wrap: wrap;
-  width: 450px;
+  display: grid;
+  grid-template-columns: repeat(5, 64px);
+  grid-template-columns: repeat(5, 64px);
+  gap: 10px;
 }
 
 .sqr {
-  width: 17%;
-  aspect-ratio: 1/1;
-  border: 3px solid black;
-  font-size: 64px;
-  text-align: center;
+  width: 64px;
+  height: 64px;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  background-color: #fcfcfc;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: ;
+}
+
+.sqr.selected {
+  border-color: #a0a0a0;
+  transform: scale(1.05);
+}
+
+.sqr:hover .dot {
+  transform: scale(1.08);
 }
 
 .navbar {
@@ -91,12 +109,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 550px;
-  height: 80%;
+  width: fit-content;
   margin: 20px auto;
-  padding: 20px;
+  padding: 24px;
   background: #EEEEEE;
   border-radius: 16px;
+
 
 }
 
