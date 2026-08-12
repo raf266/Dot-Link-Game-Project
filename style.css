@@ -16,7 +16,7 @@ body {
   width: 64px;
   height: 64px;
   border: 2px solid #ccc;
-  border-radius: 12px;
+  border-radius: 30px;
   background-color: #fcfcfc;
   cursor: pointer;
   box-sizing: border-box;
@@ -24,7 +24,7 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
-  transition: ;
+
 }
 
 .sqr.selected {
@@ -158,6 +158,38 @@ body {
   justify-content: center;
   align-items: center;
   width: fit-content;
-  margin: 20px auto;
- 
+
+}
+
+#start {
+  background-color: white;
+  color: #94C6E7;
+  font-size: 24px;
+  border-radius: 10px;
+  font-weight: bold;
+  padding: 16px 40px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+#message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #383838;
+  font-weight: bold;
+  font-size: 30px;
 }

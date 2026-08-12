@@ -7,8 +7,10 @@ const yellowDots = [15, 24]
 let clickedOnSquare = null;
 let isDrawing = false;
 let currentPath = [];
+let time = 60
 
 const squareElements = document.querySelectorAll('.sqr')
+const startButtonElement = document.querySelector('#start')
 
 
 
@@ -130,4 +132,16 @@ function getDotColor(squareId) {
     return null;
 }
 
-// add function to check if its valid and add an array 
+// do query selector for javascript for the interval inside set text content equals time 
+
+// also fix the reset button 
+
+function startGame(){
+    console.log('Game Started')
+    setInterval(()=>{
+        time--
+        console.log(time)
+    },1000)
+}
+
+startButtonElement.addEventListener('click',startGame)
