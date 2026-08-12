@@ -37,18 +37,18 @@ body {
 }
 
 .navbar {
-    background: #94C6E7;
-    color: white;
-    padding: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background: #94C6E7;
+  color: white;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
+  list-style: none;
+  display: flex;
+  gap: 20px;
 
 }
 
@@ -64,12 +64,12 @@ body {
 }
 
 .logo {
-    font-weight: 600;
-    font-size: 20px;
-    text-decoration: none;
-    align-items: center;
-    gap: 10px;
-    display: flex;
+  font-weight: 600;
+  font-size: 20px;
+  text-decoration: none;
+  align-items: center;
+  gap: 10px;
+  display: flex;
 }
 
 .logo img {
@@ -81,9 +81,9 @@ body {
 }
 
 .selected {
-    border: 3px solid black;
-    transform: scale(1.1);
-    filter: brightness(0.75);
+  border: 3px solid black;
+  transform: scale(1.1);
+  filter: brightness(0.75);
 }
 
 .home-background {
@@ -92,20 +92,20 @@ body {
   width: 100vw;
   height: 100vh;
   object-fit: cover;
-  position: fixed; 
+  position: fixed;
   top: 0;
   left: 0;
   z-index: -1;
   overflow: hidden;
 }
 
-  .home-background img {
+.home-background img {
   width: 100%;
   height: 100%;
   display: block;
 }
 
-.grid{
+.grid {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -142,4 +142,22 @@ body {
   background-color: #EEEEEE;
   transform: scale(1.05);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+#reset {
+  background-color: white;
+  color: #94C6E7;
+  font-size: 24px;
+  border-radius: 10px;
+  font-weight: bold;
+  padding: 16px 40px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  margin: 20px auto;
+ 
 }

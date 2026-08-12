@@ -11,6 +11,7 @@ let currentPath = [];
 const squareElements = document.querySelectorAll('.sqr')
 
 
+
 // 1. add event listener to each square so when I click it it becomes the clickedonSquare
 // 2. When we click on it then all the other elements should get another event lisenet for them for onMouseOver
 // 3. In the mouseOver event make it so the hovered over box becomes the color of the clickedOnSquare
@@ -62,7 +63,7 @@ squareElements.forEach(dot => {
 
         console.log("Mouse Over:", dot.id);
 
-        if (isDrawing && clickedOnSquare && dot !== clickedOnSquare) {
+        if (isDrawing && clickedOnSquare && dot !== clickedOnSquare && !event.target.dataset.originalColor) {
             dot.style.backgroundColor =
                 clickedOnSquare.style.backgroundColor;
 
@@ -128,3 +129,5 @@ function getDotColor(squareId) {
     }
     return null;
 }
+
+// add function to check if its valid and add an array 
