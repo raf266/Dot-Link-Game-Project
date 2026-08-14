@@ -106,6 +106,7 @@ body {
 }
 
 .grid {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -145,7 +146,7 @@ body {
 }
 
 #reset {
-  background-color: white;
+  background-color: #EEEEEE;
   color: #94C6E7;
   font-size: 24px;
   border-radius: 10px;
@@ -162,7 +163,7 @@ body {
 }
 
 #start {
-  background-color: white;
+  background-color: #EEEEEE;
   color: #94C6E7;
   font-size: 24px;
   border-radius: 10px;
@@ -192,4 +193,26 @@ body {
   color: #383838;
   font-weight: bold;
   font-size: 30px;
+}
+
+.timer{
+  position: absolute;
+  top: -40px;
+  right: -70px;
+  transform: translateY(-50%);
+  background-color: #EEEEEE;
+  color: #94C6E7;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 16px 40px;
+  margin: 0;
+  border: none;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  white-space: nowrap;
 }

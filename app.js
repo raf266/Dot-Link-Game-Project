@@ -8,9 +8,13 @@ let clickedOnSquare = null;
 let isDrawing = false;
 let currentPath = [];
 let time = 60
+let timeInterval = null;
 
-const squareElements = document.querySelectorAll('.sqr')
-const startButtonElement = document.querySelector('#start')
+const squareElements = document.querySelectorAll('.sqr');
+const startButtonElement = document.querySelector('#start');
+const resetButtonElement = document.querySelector("#reset");
+const timerElement = document.querySelector(".timer");
+const messageElement = document.querySelector("#message");
 
 
 
@@ -84,22 +88,31 @@ document.addEventListener("mouseup", () => {
         const finalSquare =
             currentPath[currentPath.length - 1];
 
-        const startColor = 
+        const startColor =
             getDotColor(clickedOnSquare.id);
 
-        const lastColor = 
+        const lastColor =
             getDotColor(clickedOnSquare.id);
 
         console.log("Start Color:", startColor);
         console.log("Last Color:", lastColor);
 
-        if (startColor === lastColor) {
+        if (startColor && lastColor && startColor === lastColor && clickedOnSquare.id !== finalSquare) {
+            messageElement.textContent = "Correct Connection!";
             console.log("Correct Connection!");
         }
         else {
+            messageElement.textContent = "Wrong Connection!";
             console.log("Wrong connection!");
+
+            currentPath.forEach(id => {
+                const sqr = document.getElementById(id);
+                if (!sqr.dataset.originalColor) {
+                    sqr.style.backgroundColor = "";
+                }
+            });
         }
-        
+
         console.log("Final square:", finalSquare);
     }
 
@@ -136,12 +149,52 @@ function getDotColor(squareId) {
 
 // also fix the reset button 
 
-function startGame(){
-    console.log('Game Started')
-    setInterval(()=>{
+function startGame() {
+    console.log('Game Started');
+
+    timeInterval = setInterval(() => {
         time--
         console.log(time)
-    },1000)
+
+        timerElement.textContent = `${time}s`;
+        messageElement.textContent = "Playing...";
+
+        timerElement.textContent = `${time}s`;
+
+        if (time <= 0) {
+            clearInterval(timeInterval);
+            messageElement.textContent = "Time's Up! You lost.";
+            isDrawing = false;
+            return;
+        }
+    }, 1000);
 }
 
-startButtonElement.addEventListener('click',startGame)
+function resetGame() {
+    console.log("Game Reset");
+
+    clearInterval(timeInterval);
+
+    time = 60;
+    timerElement.textContent = "60s";
+    messageElement.textContent = "Click on Start";
+
+    clickedOnSquare = null;
+    isDrawing = false;
+    currentPath = [];
+
+    squareElements.forEach(dot => {
+        dot.classList.remove("selected");
+
+        if (dot.dataset.originalColor) {
+            dot.style.backgroundColor = dot.dataset.originalColor;
+        } else {
+            dot.style.backgroundColor = "";
+        }
+    });
+}
+
+
+
+startButtonElement.addEventListener('click', startGame);
+resetButtonElement.addEventListener("click", resetGame);
