@@ -216,3 +216,16 @@ body {
   width: fit-content;
   white-space: nowrap;
 }
+
+.contact-us-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #EEEEEE;
+
+}
+
+.contact-us-details {
+  font-size: larger;
+  color: #94C6E7;
+}
