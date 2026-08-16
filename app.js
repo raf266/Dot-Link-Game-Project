@@ -16,6 +16,8 @@ const resetButtonElement = document.querySelector("#reset");
 const timerElement = document.querySelector(".timer");
 const messageElement = document.querySelector("#message");
 
+console.log(squareElements)
+
 
 
 // 1. add event listener to each square so when I click it it becomes the clickedonSquare
@@ -43,12 +45,19 @@ yellowDots.forEach(id => {
     document.getElementById(id).style.backgroundColor = "#FAF7C0";
 });
 
+
+// function isMoveValid(element){
+//     if(element.)
+// }
+
 squareElements.forEach(dot => {
     dot.dataset.originalColor = dot.style.backgroundColor;
 });
 
 squareElements.forEach(dot => {
     dot.addEventListener("mousedown", () => {
+        console.log('MOUSE DOWN')
+        if(currentPath.at(-1))
         if (clickedOnSquare) {
             clickedOnSquare.classList.remove("selected");
         }
@@ -69,7 +78,8 @@ squareElements.forEach(dot => {
 
         console.log("Mouse Over:", dot.id);
 
-        if (isDrawing && clickedOnSquare && dot !== clickedOnSquare && !event.target.dataset.originalColor) {
+
+        if (isDrawing && clickedOnSquare && dot !== clickedOnSquare && !event.target.dataset.originalColor && !currentPath.includes(dot.id)) {
             dot.style.backgroundColor =
                 clickedOnSquare.style.backgroundColor;
 
