@@ -7,7 +7,7 @@ const yellowDots = [15, 24]
 let clickedOnSquare = null;
 let isDrawing = false;
 let currentPath = [];
-let time = 60
+let time = 20
 let timeInterval = null;
 
 const squareElements = document.querySelectorAll('.sqr');
@@ -47,7 +47,7 @@ yellowDots.forEach(id => {
 
 
 // function isMoveValid(element){
-//     if(element.)
+//     if(element.)
 // }
 
 squareElements.forEach(dot => {
@@ -57,10 +57,10 @@ squareElements.forEach(dot => {
 squareElements.forEach(dot => {
     dot.addEventListener("mousedown", () => {
         console.log('MOUSE DOWN')
-        if(currentPath.at(-1))
-        if (clickedOnSquare) {
-            clickedOnSquare.classList.remove("selected");
-        }
+        if (currentPath.at(-1))
+            if (clickedOnSquare) {
+                clickedOnSquare.classList.remove("selected");
+            }
         clickedOnSquare = dot;
         isDrawing = true;
 
@@ -185,8 +185,8 @@ function resetGame() {
 
     clearInterval(timeInterval);
 
-    time = 60;
-    timerElement.textContent = "60s";
+    time = 20;
+    timerElement.textContent = "20s";
     messageElement.textContent = "Click on Start";
 
     clickedOnSquare = null;

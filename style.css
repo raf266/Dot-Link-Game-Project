@@ -198,7 +198,7 @@ body {
 .timer {
   position: absolute;
   top: -40px;
-  right: -70px;
+  right: -120px;
   transform: translateY(-50%);
   background-color: #EEEEEE;
   color: #94C6E7;
