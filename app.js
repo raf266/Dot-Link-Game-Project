@@ -1,18 +1,22 @@
+/*-------------------------------- Constants --------------------------------*/
 const purpleDots = [0, 12]
 const blueDots = [3, 6]
 const greenDots = [4, 19]
 const pinkDots = [7, 16]
 const yellowDots = [15, 24]
 
+const TOTAL_PAIRS = 5;
+
+/*-------------------------------- Variables --------------------------------*/
 let clickedOnSquare = null;
 let isDrawing = false;
 let currentPath = [];
-let time = 20
+let time = 15
 let timeInterval = null;
 let gameOver = false;
 const connectedColors = new Set();
-const TOTAL_PAIRS = 5;
 
+/*------------------------ Cached Element References ------------------------*/
 const squareElements = document.querySelectorAll('.sqr');
 const startButtonElement = document.querySelector('#start');
 const resetButtonElement = document.querySelector("#reset");
@@ -49,6 +53,7 @@ squareElements.forEach(dot => {
     dot.dataset.originalColor = dot.style.backgroundColor;
 });
 
+/*----------------------------- Event Listeners -----------------------------*/
 squareElements.forEach(dot => {
     dot.addEventListener("mousedown", () => {
         event.preventDefault();
@@ -141,6 +146,7 @@ document.addEventListener("mouseup", () => {
 
 });
 
+/*-------------------------------- Functions --------------------------------*/
 function getDotColor(squareId) {
     const id = Number(squareId);
 
@@ -207,8 +213,8 @@ function resetGame() {
 
     clearInterval(timeInterval);
 
-    time = 20;
-    timerElement.textContent = "20s";
+    time = 15;
+    timerElement.textContent = "15s";
     messageElement.textContent = "Click on Start";
 
     clickedOnSquare = null;
