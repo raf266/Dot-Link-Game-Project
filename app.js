@@ -9,12 +9,16 @@ let isDrawing = false;
 let currentPath = [];
 let time = 20
 let timeInterval = null;
+let gameOver = false;
+const connectedColors = new Set();
+const TOTAL_PAIRS = 5;
 
 const squareElements = document.querySelectorAll('.sqr');
 const startButtonElement = document.querySelector('#start');
 const resetButtonElement = document.querySelector("#reset");
 const timerElement = document.querySelector(".timer");
 const messageElement = document.querySelector("#message");
+
 
 console.log(squareElements)
 
@@ -46,9 +50,6 @@ yellowDots.forEach(id => {
 });
 
 
-// function isMoveValid(element){
-//     if(element.)
-// }
 
 squareElements.forEach(dot => {
     dot.dataset.originalColor = dot.style.backgroundColor;
@@ -56,6 +57,10 @@ squareElements.forEach(dot => {
 
 squareElements.forEach(dot => {
     dot.addEventListener("mousedown", () => {
+        event.preventDefault();
+        if (gameOver) 
+            return;
+
         console.log('MOUSE DOWN')
         if (currentPath.at(-1))
             if (clickedOnSquare) {
@@ -69,7 +74,6 @@ squareElements.forEach(dot => {
         clickedOnSquare.classList.add("selected");
 
 
-
         console.log("Mouse Down:", dot.id);
         console.log("Current path:", currentPath);
     });
@@ -78,8 +82,10 @@ squareElements.forEach(dot => {
 
         console.log("Mouse Over:", dot.id);
 
+        const targetIsBlank = !event.target.dataset.originalColor;
+        const targetIsMatchingDot = clickedOnSquare && getDotColor(dot.id) === getDotColor(clickedOnSquare.id);
 
-        if (isDrawing && clickedOnSquare && dot !== clickedOnSquare && !event.target.dataset.originalColor && !currentPath.includes(dot.id)) {
+        if (isDrawing && clickedOnSquare && dot !== clickedOnSquare && (targetIsBlank || targetIsMatchingDot) && !currentPath.includes(dot.id)) {
             dot.style.backgroundColor =
                 clickedOnSquare.style.backgroundColor;
 
@@ -108,8 +114,17 @@ document.addEventListener("mouseup", () => {
         console.log("Last Color:", lastColor);
 
         if (startColor && lastColor && startColor === lastColor && clickedOnSquare.id !== finalSquare) {
+            connectedColors.add(startColor);
+            
+        if (connectedColors.size === TOTAL_PAIRS) {
+            messageElement.textContent = "Congratulations, You won!";
+            console.log("Congratualtions!");
+            clearInterval(timeInterval);
+            gameOver = true;
+        } else {
             messageElement.textContent = "Correct Connection!";
             console.log("Correct Connection!");
+        }
         }
         else {
             messageElement.textContent = "Wrong Connection!";
@@ -155,9 +170,6 @@ function getDotColor(squareId) {
     return null;
 }
 
-// do query selector for javascript for the interval inside set text content equals time 
-
-// also fix the reset button 
 
 function startGame() {
     console.log('Game Started');
@@ -175,6 +187,7 @@ function startGame() {
             clearInterval(timeInterval);
             messageElement.textContent = "Time's Up! You lost.";
             isDrawing = false;
+            gameOver = true;
             return;
         }
     }, 1000);
@@ -192,6 +205,8 @@ function resetGame() {
     clickedOnSquare = null;
     isDrawing = false;
     currentPath = [];
+    connectedColors.clear();
+    gameOver = false;
 
     squareElements.forEach(dot => {
         dot.classList.remove("selected");
