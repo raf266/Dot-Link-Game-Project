@@ -22,12 +22,6 @@ const messageElement = document.querySelector("#message");
 
 console.log(squareElements)
 
-
-
-// 1. add event listener to each square so when I click it it becomes the clickedonSquare
-// 2. When we click on it then all the other elements should get another event lisenet for them for onMouseOver
-// 3. In the mouseOver event make it so the hovered over box becomes the color of the clickedOnSquare
-
 console.log(squareElements)
 purpleDots.forEach(id => {
     document.getElementById(id).style.backgroundColor = "#D1B9D9";
@@ -121,6 +115,8 @@ document.addEventListener("mouseup", () => {
             console.log("Congratualtions!");
             clearInterval(timeInterval);
             gameOver = true;
+
+            showConfetti();
         } else {
             messageElement.textContent = "Correct Connection!";
             console.log("Correct Connection!");
@@ -168,6 +164,19 @@ function getDotColor(squareId) {
         return "#FAF7C0";
     }
     return null;
+}
+
+function showConfetti() {
+    const script = document.createElement("script");
+
+    script.src = "https://run.confettipage.com/here.js";
+
+    script.setAttribute(
+        "data-confetticode",
+        "U2FsdGVkX18yXowCUnqJh2HvSq5kSw/iKnHvJGzweEmFfoKdpkKdvnuB4xHb41yo25zDcbcTw2LrxlqV0VPesmLaKvan6qT7ghWGoBW2NhSHhj2MAgN2IiTe0fTrrrMpz7/jaM03Fjs48WxsnPS+xJIT8Y/afPXKTGscvuDcsfsSh1fMhWhxg7z9ICAAa6+Sw0CleL6hJyw1VWKhSriBor66BNhZY9iAiNWrCYMO4KHns1VJWuRF3LP1hTlTKHs0X/YQEPjpyPhEZoRc+VrfdS4wwVDG9azgcr+AW3RSvF5NB2oPaIONbDrsFW404+Q59uhOLvJ6P4EPCh5WH+jKlRUVXchSf6lmspwN7m6yFwinNGTCBisXys+6bTPF21SVFJd5mYKbPA6kRUoPigzlS/nbnZrzRa9FGnFEQK2t3zBGqtyEqoUiyTbhL/CuNL8eGOGcotriILsjUOV+SFbqrhr/ZlNJ6yOH7AardhnpBvFl/RQ6OohG3QJbFtOkXxmSxkBRFRQhjXwJ605Dl7V0GBDMT4faeexUfOV4QfXhUDvDedtWRditzJXWXmGPQXoWfdYzeSqGfpYqrp4UHugk9yA1fu2h/q4AwaphIE11Gble2c6E0U74Sk/4fUs75xtccDsjXDB+dAn6SrpXgUc+J8R9PK2MxFDnIN4rxUC08Hwq6xUr8beRv8TOYL5tbvufjuTTCEXEmTmm20SmNhgMcpxgdc/fkrhBdxilNJf7Ue6BTeS2z3uWiXDo0XijXyAjP1XjhIPB9mm/oE/VX7U77v+93MvrOFsobSX1kSNvlqDQEafEWmei4mfh4pZ3bMt8"
+    );
+
+    document.body.appendChild(script);
 }
 
 
