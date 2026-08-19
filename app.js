@@ -107,7 +107,7 @@ document.addEventListener("mouseup", () => {
             getDotColor(clickedOnSquare.id);
 
         const lastColor =
-            getDotColor(clickedOnSquare.id);
+            getDotColor(finalSquare);
 
         console.log("Start Color:", startColor);
         console.log("Last Color:", lastColor);
